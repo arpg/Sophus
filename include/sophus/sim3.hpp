@@ -624,8 +624,8 @@ private:
         B = static_cast<Scalar>(1./6.);
       } else {
         Scalar theta_sq = theta*theta;
-        A = (one-cos(theta))/theta_sq;
-        B = (theta-sin(theta))/(theta_sq*theta);
+        A = (one-std::cos(theta))/theta_sq;
+        B = (theta-std::sin(theta))/(theta_sq*theta);
       }
     } else {
       C = (scale-one)/sigma;
@@ -635,8 +635,8 @@ private:
         B = ((half*sigma*sigma-sigma+one)*scale)/(sigma_sq*sigma);
       } else {
         Scalar theta_sq = theta*theta;
-        Scalar a = scale*sin(theta);
-        Scalar b = scale*cos(theta);
+        Scalar a = scale*std::sin(theta);
+        Scalar b = scale*std::cos(theta);
         Scalar c = theta_sq+sigma*sigma;
         A = (a*sigma+ (one-b)*theta)/(theta*c);
         B = (C-((b-one)*sigma+a*theta)/(c))*one/(theta_sq);

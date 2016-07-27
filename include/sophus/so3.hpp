@@ -69,6 +69,10 @@ struct traits<Map<const Sophus::SO3Group<_Scalar>, _Options> >
 
 namespace Sophus {
 using namespace Eigen;
+using std::sqrt;
+using std::abs;
+using std::cos;
+using std::sin;
 
 /**
  * \brief SO3 base type - implements SO3 class but is storage agnostic
@@ -555,13 +559,13 @@ public:
     if (n < SophusConstants<Scalar>::epsilon()) {
       // If quaternion is normalized and n=0, then w should be 1;
       // w=0 should never happen here!
-      SOPHUS_ENSURE(std::abs(w) >= SophusConstants<Scalar>::epsilon(),
+      SOPHUS_ENSURE(abs(w) >= SophusConstants<Scalar>::epsilon(),
                     "Quaternion should be normalized!");
       Scalar squared_w = w*w;
       two_atan_nbyw_by_n = static_cast<Scalar>(2) / w
                            - static_cast<Scalar>(2)*(squared_n)/(w*squared_w);
     } else {
-      if (std::abs(w)<SophusConstants<Scalar>::epsilon()) {
+      if (abs(w)<SophusConstants<Scalar>::epsilon()) {
         if (w > static_cast<Scalar>(0)) {
           two_atan_nbyw_by_n = M_PI/n;
         } else {

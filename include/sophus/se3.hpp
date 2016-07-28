@@ -76,6 +76,9 @@ struct traits<Map<const Sophus::SE3Group<_Scalar>, _Options> >
 
 namespace Sophus {
 using namespace Eigen;
+using std::abs;
+using std::cos;
+using std::sin;
 
 /**
  * \brief SE3 base type - implements SE3 class but is storage agnostic
@@ -647,7 +650,7 @@ public:
     upsilon_omega.template tail<3>()
         = SO3Group<Scalar>::logAndTheta(se3.so3(), &theta);
 
-    if (std::abs(theta)<SophusConstants<Scalar>::epsilon()) {
+    if (abs(theta)<SophusConstants<Scalar>::epsilon()) {
       const Matrix<Scalar,3,3> & Omega
           = SO3Group<Scalar>::hat(upsilon_omega.template tail<3>());
       const Matrix<Scalar,3,3> & V_inv =

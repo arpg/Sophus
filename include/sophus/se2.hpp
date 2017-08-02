@@ -394,7 +394,7 @@ public:
     Scalar sin_theta_by_theta;
     Scalar one_minus_cos_theta_by_theta;
 
-    if(std::abs(theta)<SophusConstants<Scalar>::epsilon()) {
+    if(abs(theta)<SophusConstants<Scalar>::epsilon()) {
       Scalar theta_sq = theta*theta;
       sin_theta_by_theta
           = static_cast<Scalar>(1.) - static_cast<Scalar>(1./6.)*theta_sq;

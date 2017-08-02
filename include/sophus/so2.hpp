@@ -205,7 +205,7 @@ public:
   inline
   void normalize() {
     Scalar length =
-        std::sqrt(unit_complex().x()*unit_complex().x()
+        sqrt(unit_complex().x()*unit_complex().x()
              + unit_complex().y()*unit_complex().y());
     SOPHUS_ENSURE(length >= SophusConstants<Scalar>::epsilon(),
                   "Complex number should not be close to zero!");
@@ -321,7 +321,7 @@ public:
    */
   inline static
   SO2Group<Scalar> exp(const Tangent & theta) {
-    return SO2Group<Scalar>(std::cos(theta), std::sin(theta));
+    return SO2Group<Scalar>(cos(theta), sin(theta));
   }
 
   /**
